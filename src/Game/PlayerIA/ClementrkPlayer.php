@@ -7,13 +7,14 @@ use Hackathon\Game\Result;
 /**
  * Class LovePlayer
  * @package Hackathon\PlayerIA
- * @author rocca_c
+ * @author Clement Rocca
  */
 class ClementrkPlayer extends Player
 {
     protected $mySide;
     protected $opponentSide;
     protected $result;
+    public $zero_pitie = 0;
 
     public function getChoice()
     {
@@ -40,8 +41,15 @@ class ClementrkPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
- 
-        return parent::foeChoice();
+        
+        //Si l'adversaire me denonce 1 fois plus de pitie
+        if ($this->result->getLastChoiceFor($this->opponentSide) == "foe")
+            $zero_pitie = 1;
+
+        if ($zero_pitie == 0)
+            return parent::friendChoice();
+        else
+            return parent::foeChoice();
     }
  
 };
