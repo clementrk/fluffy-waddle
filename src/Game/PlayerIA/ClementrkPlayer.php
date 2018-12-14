@@ -44,9 +44,9 @@ class ClementrkPlayer extends Player
         
         //Si l'adversaire me denonce 1 fois plus de pitie
         if ($this->result->getLastChoiceFor($this->opponentSide) == "foe")
-            $zero_pitie = 1;
+            $this->$zero_pitie = 1;
 
-        if ($zero_pitie == 0)
+        if ($this->$zero_pitie == 0)
             return parent::friendChoice();
         else
             return parent::foeChoice();
